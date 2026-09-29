@@ -461,7 +461,9 @@
       var originais = Array.prototype.slice.call(lista.children);
       marcasVp.classList.add('is-looping'); // antes de medir: tira o flex-wrap do celular
       // repete os itens até uma cópia cobrir a tela inteira (senão sobra buraco no loop)
-      for (var i = 0; i < 20 && lista.scrollWidth < marcasVp.clientWidth; i++) {
+      // usa a largura da tela (não só da janela) pra cobrir janela maximizada depois do load
+      var alvo = Math.max(marcasVp.clientWidth, window.screen ? screen.width : 0);
+      for (var i = 0; i < 20 && lista.scrollWidth < alvo; i++) {
         originais.forEach(function (li) {
           var c = li.cloneNode(true);
           c.setAttribute('aria-hidden', 'true');
