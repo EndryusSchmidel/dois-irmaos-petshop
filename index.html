@@ -3,8 +3,26 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Loja de Ração Dois Irmãos | São João de Meriti</title>
-<meta name="description" content="Ração das melhores marcas, petiscos, acessórios e medicamentos para cães, gatos e pássaros no Centro de São João de Meriti. Entregamos na sua porta!">
+<title>Loja de Ração Dois Irmãos | São João de Meriti e Nova Iguaçu</title>
+<meta name="description" content="Ração das melhores marcas, petiscos, acessórios e medicamentos para cães, gatos e pássaros em São João de Meriti e Nova Iguaçu. Entregamos na sua porta!">
+<link rel="icon" href="assets/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="assets/icon-192.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<meta name="theme-color" content="#5b2a86">
+<!-- Prévia do link (WhatsApp, Facebook, Instagram). Ao trocar para o domínio próprio, atualizar as 3 URLs abaixo (canonical, og:url, og:image). -->
+<link rel="canonical" href="https://endryusschmidel.github.io/dois-irmaos-petshop/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Loja de Ração Dois Irmãos">
+<meta property="og:title" content="Loja de Ração Dois Irmãos | São João de Meriti e Nova Iguaçu">
+<meta property="og:description" content="Ração, petiscos, acessórios e medicamentos pro seu pet. Duas lojas e entrega na sua porta. Peça pelo WhatsApp!">
+<meta property="og:url" content="https://endryusschmidel.github.io/dois-irmaos-petshop/">
+<meta property="og:image" content="https://endryusschmidel.github.io/dois-irmaos-petshop/assets/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Logo e fachada da Loja de Ração Dois Irmãos">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -23,6 +41,7 @@
     --raio: 20px;
   }
   * { box-sizing: border-box; }
+  [hidden] { display: none !important; }
   html { scroll-behavior: smooth; }
   body {
     margin: 0;
@@ -94,24 +113,29 @@
   .hero h1 span { color: var(--amarelo); }
   .hero p { font-size: 1.15rem; max-width: 34em; opacity: .95; margin: 0 0 28px; }
   .hero-acoes { display: flex; flex-wrap: wrap; gap: 12px; }
-  .hero-arte {
-    aspect-ratio: 1; max-width: 100%; width: 100%;
-    background: var(--amarelo); border-radius: 50%;
-    display: grid; place-items: center; position: relative;
-    box-shadow: 0 0 0 14px rgba(255,255,255,.08), 0 0 0 28px rgba(255,255,255,.05);
+  .hero-arte { position: relative; margin: 0; padding: 0 14px 18px; }
+  .hero-foto {
+    display: block; width: 100%; max-width: 100%; height: auto; aspect-ratio: 17 / 10; object-fit: cover;
+    border-radius: 22px; border: 6px solid #fff; transform: rotate(1.5deg);
+    box-shadow: 0 18px 40px rgba(0,0,0,.28), 0 0 0 14px rgba(255,198,41,.18);
+    background: var(--roxo-claro);
   }
-  .hero-arte .bichos { font-size: clamp(4rem, 11vw, 7.5rem); line-height: 1; text-align: center; }
+  .hero-arte figcaption {
+    position: absolute; left: 50%; bottom: 0; transform: translateX(-50%);
+    background: var(--amarelo); color: var(--roxo-escuro); font-weight: 800; font-size: .85rem;
+    padding: .35em 1em; border-radius: 999px; white-space: nowrap; box-shadow: 0 6px 14px rgba(0,0,0,.2);
+  }
   .hero-arte .balao {
     position: absolute; background: #fff; color: var(--roxo);
     font-family: "Baloo 2", sans-serif; font-weight: 800;
     padding: .4em 1em; border-radius: 16px; font-size: 1.05rem;
     box-shadow: 0 8px 20px rgba(0,0,0,.18);
   }
-  .balao.b1 { top: 12%; left: -4%; transform: rotate(-6deg); }
-  .balao.b2 { bottom: 14%; right: -4%; transform: rotate(5deg); }
+  .balao.b1 { top: -14px; left: -6px; transform: rotate(-6deg); }
+  .balao.b2 { top: 38%; right: -10px; transform: rotate(5deg); }
   @media (max-width: 820px) {
     .hero-grid { grid-template-columns: 1fr; }
-    .hero-arte { max-width: 320px; margin-inline: auto; }
+    .hero-arte { max-width: 520px; margin-inline: auto; width: 100%; }
   }
 
   section { padding-block: 72px; }
@@ -137,14 +161,6 @@
 
   /* Produtos */
   .produtos { background: var(--roxo-claro); }
-  .produtos-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 16px; }
-  .produto {
-    background: #fff; border-radius: var(--raio); padding: 24px 16px; text-align: center;
-    font-weight: 700; color: var(--roxo-escuro);
-    transition: transform .15s ease;
-  }
-  .produto:hover { transform: translateY(-4px) rotate(-1deg); }
-  .produto span { display: block; font-size: 2.4rem; margin-bottom: 6px; }
   .pagamento {
     margin-top: 36px; display: flex; flex-wrap: wrap; gap: 10px 14px;
     justify-content: center; align-items: center; color: var(--roxo-escuro); font-weight: 700;
@@ -161,7 +177,12 @@
   .entrega .moto { font-size: clamp(3.5rem, 9vw, 5rem); line-height: 1; }
   .entrega h2 { font-size: clamp(1.7rem, 4vw, 2.4rem); margin-bottom: .2em; }
   .entrega p { margin: 0; font-size: 1.1rem; }
-  .entrega .fone { font-family: "Baloo 2", sans-serif; font-size: 1.5rem; font-weight: 800; }
+  .fones { list-style: none; margin: 12px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px 28px; }
+  .fones li { display: flex; flex-direction: column; line-height: 1.15; }
+  .fones span { font-size: .8rem; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; opacity: .75; }
+  .fones a { font-family: "Baloo 2", sans-serif; font-size: 1.45rem; font-weight: 800; text-decoration: none; font-variant-numeric: tabular-nums; }
+  .fones a:hover { text-decoration: underline; }
+  @media (max-width: 820px) { .fones { justify-content: center; } .fones li { align-items: center; } }
   @media (max-width: 820px) { .entrega { grid-template-columns: 1fr; text-align: center; } }
 
   /* Visite */
@@ -188,9 +209,18 @@
   @media (max-width: 820px) { .visite-grid { grid-template-columns: 1fr; } }
 
   /* Rodapé */
-  footer { background: var(--roxo-escuro); color: #fff; padding-block: 40px 90px; text-align: center; }
-  footer .logo { justify-content: center; margin-bottom: 12px; }
-  footer p { margin: 4px 0; opacity: .85; }
+  footer { background: var(--roxo-escuro); color: #fff; padding-block: 48px 32px; }
+  .foot { display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap; }
+  .foot-links { display: flex; flex-wrap: wrap; gap: 12px 24px; list-style: none; margin: 0; padding: 0; font-weight: 700; font-size: .95rem; }
+  .foot-links a { text-decoration: none; opacity: .75; }
+  .foot-links a:hover, .foot-links a:focus-visible { opacity: 1; color: var(--amarelo); }
+  .foot-bottom {
+    border-top: 1px solid rgba(255,255,255,.14); margin-top: 32px; padding-top: 24px;
+    font-size: .82rem; opacity: .7; display: flex; justify-content: space-between; gap: 8px 16px; flex-wrap: wrap;
+  }
+  .foot-bottom a { text-decoration: underline; }
+  /* espaço pro botão flutuante do WhatsApp não cobrir o texto */
+  @media (max-width: 1240px) { footer { padding-bottom: 96px; } }
 
   /* Botão flutuante */
   .whats-flutuante {
@@ -224,6 +254,96 @@
   @media (max-width: 600px) {
     .marcas-viewport:not(.is-looping) .marcas-lista { flex-wrap: wrap; justify-content: center; }
   }
+
+  /* Seletor de lojas */
+  .lojas-abas { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin: -20px 0 28px; }
+  .loja-aba {
+    font: inherit; font-weight: 800; cursor: pointer;
+    padding: .7em 1.4em; border-radius: 999px;
+    border: 2px solid var(--roxo); background: #fff; color: var(--roxo);
+    transition: background .15s ease, color .15s ease;
+  }
+  .loja-aba:hover { background: var(--roxo-claro); }
+  .loja-aba[aria-selected="true"] { background: var(--roxo); color: #fff; }
+  .loja-aba:focus-visible { outline: 3px solid var(--amarelo); outline-offset: 3px; }
+  .loja-geo { text-align: center; margin: -14px 0 28px; }
+  .loja-geo-btn {
+    font: inherit; font-weight: 700; cursor: pointer; background: none; border: 0;
+    color: var(--roxo); text-decoration: underline; text-underline-offset: 3px; padding: 6px 10px; border-radius: 8px;
+  }
+  .loja-geo-btn:hover { color: var(--roxo-escuro); }
+  .loja-geo-btn:focus-visible { outline: 3px solid var(--amarelo); }
+  .loja-geo-btn[disabled] { opacity: .6; cursor: progress; }
+  .loja-geo-msg { margin: 2px 0 0; font-size: .9rem; color: var(--cinza); min-height: 1.4em; }
+  .loja-geo-msg strong { color: var(--roxo-escuro); }
+  .zap-selo { display: inline-block; margin-left: 6px; padding: 1px 8px; border-radius: 999px; background: var(--verde); color: #fff; font-size: .72rem; font-weight: 800; vertical-align: middle; }
+  .zap-opcao.sugerida { border-color: var(--verde); }
+
+  /* Escolha de loja no WhatsApp */
+  .zap-dialog {
+    border: 0; border-radius: var(--raio); padding: 28px 24px 22px;
+    width: min(380px, calc(100% - 32px)); background: #fff; color: var(--texto);
+    box-shadow: 0 20px 60px rgba(61,26,94,.35);
+  }
+  .zap-dialog::backdrop { background: rgba(61,26,94,.55); }
+  .zap-dialog h2 { font-size: 1.5rem; color: var(--roxo); margin: 0 0 4px; text-align: center; }
+  .zap-dialog > p { margin: 0 0 18px; color: var(--cinza); text-align: center; }
+  .zap-opcoes { display: grid; gap: 10px; }
+  .zap-opcao {
+    display: flex; align-items: center; gap: 12px; text-decoration: none;
+    padding: 14px 16px; border-radius: 16px; border: 2px solid var(--roxo-claro);
+    color: var(--roxo-escuro); transition: border-color .15s ease, background .15s ease;
+  }
+  .zap-opcao:hover, .zap-opcao:focus-visible { border-color: var(--verde); background: #effbf3; outline: none; }
+  .zap-opcao svg { width: 28px; height: 28px; color: var(--verde); flex: none; }
+  .zap-opcao strong { display: block; font-family: "Baloo 2", sans-serif; font-size: 1.15rem; line-height: 1.1; }
+  .zap-opcao small { color: var(--cinza); }
+  .zap-fechar {
+    display: block; margin: 14px auto 0; background: none; border: 0; cursor: pointer;
+    font: inherit; font-weight: 700; color: var(--cinza); padding: 6px 12px; border-radius: 8px;
+  }
+  .zap-fechar:hover { color: var(--roxo); }
+  .zap-fechar:focus-visible { outline: 3px solid var(--amarelo); }
+
+  /* Catálogo */
+  .cat-filtros { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin: -16px 0 24px; }
+  .cat-filtro {
+    font: inherit; font-weight: 700; cursor: pointer; padding: .45em 1.1em; border-radius: 999px;
+    border: 2px solid transparent; background: #fff; color: var(--roxo-escuro);
+  }
+  .cat-filtro:hover { border-color: var(--roxo); }
+  .cat-filtro[aria-pressed="true"] { background: var(--roxo); color: #fff; }
+  .cat-filtro:focus-visible, .cat-pedir:focus-visible { outline: 3px solid var(--amarelo); outline-offset: 2px; }
+  .cat-aviso { text-align: center; margin: -12px 0 20px; font-size: .85rem; font-weight: 700; color: #9a6700; }
+  .cat-grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 16px; }
+  .cat-item {
+    background: #fff; border-radius: var(--raio); overflow: hidden; display: flex; flex-direction: column;
+    box-shadow: 0 4px 16px rgba(91,42,134,.08);
+  }
+  .cat-foto { aspect-ratio: 4 / 3; max-width: 100%; display: grid; place-items: center; font-size: 3.4rem; background: var(--amarelo-claro); }
+  .cat-foto img { width: 100%; height: 100%; object-fit: contain; }
+  .cat-info { padding: 14px 16px 16px; display: flex; flex-direction: column; gap: 2px; flex: 1; }
+  .cat-marca { font-size: .78rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: var(--cinza); }
+  .cat-nome { font-family: "Baloo 2", sans-serif; font-weight: 700; font-size: 1.1rem; line-height: 1.2; color: var(--roxo-escuro); margin: 0; }
+  .cat-peso { font-size: .9rem; color: var(--cinza); }
+  .cat-preco { font-family: "Baloo 2", sans-serif; font-weight: 800; font-size: 1.45rem; color: var(--roxo); margin-top: auto; padding-top: 8px; font-variant-numeric: tabular-nums; }
+  .cat-pedir {
+    display: flex; align-items: center; justify-content: center; gap: .4em; margin-top: 10px;
+    padding: .65em .8em; border-radius: 999px; background: var(--verde); color: #fff; font-weight: 700; text-decoration: none; font-size: .9rem;
+    white-space: nowrap;
+  }
+  .cat-pedir svg { width: 1.1em; height: 1.1em; }
+  .cat-rodape { text-align: center; margin-top: 24px; }
+  .cat-mais { color: var(--roxo); background: #fff; cursor: pointer; font: inherit; font-weight: 700; }
+  .cat-data { font-size: .85rem; color: var(--cinza); margin: 14px 0 0; }
+  @media (max-width: 480px) {
+    .cat-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+    .cat-info { padding: 10px 12px 12px; }
+    .cat-nome { font-size: 1rem; }
+    .cat-preco { font-size: 1.2rem; }
+    .cat-pedir { font-size: .9rem; padding: .6em .6em; }
+    .cat-pedir-extra { display: none; }
+  }
 </style>
 </head>
 <body>
@@ -236,7 +356,7 @@
 <header>
   <div class="container nav">
     <a class="logo" href="#inicio" aria-label="Loja de Ração Dois Irmãos - início">
-      <img class="logo-selo" src="assets/logo.png" alt="" aria-hidden="true">
+      <img class="logo-selo" src="assets/logo-96.webp" srcset="assets/logo-96.webp 1x, assets/logo-192.webp 2x" width="46" height="46" alt="" aria-hidden="true">
       <span class="logo-texto"><small>Loja de Ração</small><strong>Dois Irmãos</strong></span>
     </a>
     <nav class="nav-links">
@@ -256,7 +376,7 @@
       <div>
         <span class="etiqueta">📦 Entregamos na sua porta</span>
         <h1>Dois irmãos, <span>um só propósito:</span> cuidar do seu pet como se fosse nosso!</h1>
-        <p>Ração das melhores marcas, petiscos, acessórios e muito carinho pra cachorro, gato e companhia — aqui no Centro de São João de Meriti.</p>
+        <p>Ração das melhores marcas, petiscos, acessórios e muito carinho pra cachorro, gato e companhia — em São João de Meriti e Nova Iguaçu.</p>
         <div class="hero-acoes">
           <a class="btn btn-whats" href="https://wa.me/5521971996174?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20fazer%20um%20pedido." target="_blank" rel="noopener">
             <svg><use href="#i-whats"/></svg> Pedir pelo WhatsApp
@@ -264,11 +384,16 @@
           <a class="btn btn-contorno" href="#visite">Como chegar</a>
         </div>
       </div>
-      <div class="hero-arte" aria-hidden="true">
-        <div class="bichos">🐶🐱<br>🦜</div>
-        <span class="balao b1">Aumigo? 🐾</span>
-        <span class="balao b2">Miaumigo? 💜</span>
-      </div>
+      <figure class="hero-arte">
+        <picture>
+          <source srcset="assets/fachada.webp" type="image/webp">
+          <img class="hero-foto" src="assets/fachada.jpg" width="680" height="400"
+               alt="Fachada da Loja de Ração Dois Irmãos em São João de Meriti, com a placa amarela e roxa">
+        </picture>
+        <span class="balao b1" aria-hidden="true">Aumigo? 🐾</span>
+        <span class="balao b2" aria-hidden="true">Miaumigo? 💜</span>
+        <figcaption>Nossa loja em São João de Meriti</figcaption>
+      </figure>
     </div>
   </div>
 
@@ -290,9 +415,9 @@
           <p>Loja de bairro, de família. A gente conhece o cliente pelo nome — e o pet também.</p>
         </div>
         <div class="card">
-          <div class="icone" aria-hidden="true">🛵</div>
-          <h3>Disk Ração</h3>
-          <p>Não precisa carregar saco pesado: chama no WhatsApp que a gente entrega na sua porta.</p>
+          <div class="icone" aria-hidden="true">📍</div>
+          <h3>Duas lojas perto de você</h3>
+          <p>Uma no Centro de São João de Meriti e outra em Santa Eugênia, Nova Iguaçu. Escolha a mais perto e passe lá.</p>
         </div>
       </div>
     </div>
@@ -301,16 +426,15 @@
   <section id="produtos" class="produtos">
     <div class="container">
       <div class="titulo-secao">
-        <h2>O que você encontra aqui</h2>
-        <p>Tudo pra cachorro, gato, passarinho e companhia.</p>
+        <h2>Nossos produtos</h2>
+        <p>Ração, petiscos e cuidados pra cachorro, gato, passarinho e companhia. Viu o que precisa? Pede direto no WhatsApp.</p>
       </div>
-      <div class="produtos-grid">
-        <div class="produto"><span aria-hidden="true">🥣</span>Ração</div>
-        <div class="produto"><span aria-hidden="true">🦴</span>Petiscos</div>
-        <div class="produto"><span aria-hidden="true">💊</span>Medicamentos</div>
-        <div class="produto"><span aria-hidden="true">🎾</span>Acessórios</div>
-        <div class="produto"><span aria-hidden="true">🛁</span>Produtos de higiene</div>
-        <div class="produto"><span aria-hidden="true">🌾</span>Comida de passarinho</div>
+      <div class="cat-filtros" role="group" aria-label="Filtrar por categoria" id="cat-filtros"></div>
+      <p class="cat-aviso" id="cat-aviso" hidden>Itens e preços de exemplo</p>
+      <ul class="cat-grid" id="cat-grid" role="list"></ul>
+      <div class="cat-rodape">
+        <button type="button" class="btn btn-contorno cat-mais" id="cat-mais" hidden></button>
+        <p class="cat-data" id="cat-data"></p>
       </div>
       <div class="pagamento">
         <span>Formas de pagamento:</span>
@@ -346,14 +470,14 @@
         <div>
           <h2>Disk Ração: pediu, chegou!</h2>
           <p>Faça seu pedido pelo WhatsApp ou telefone e receba em casa.</p>
-          <p class="fone">(21) 97199-6174</p>
+          <ul class="fones" role="list">
+            <li><span>São João de Meriti</span><a href="tel:+5521971996174">(21) 97199-6174</a></li>
+            <li><span>Nova Iguaçu</span><a href="tel:+5521969397793">(21) 96939-7793</a></li>
+          </ul>
         </div>
         <div class="hero-acoes" style="justify-content:center">
           <a class="btn btn-whats" href="https://wa.me/5521971996174?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20uma%20entrega." target="_blank" rel="noopener">
             <svg><use href="#i-whats"/></svg> WhatsApp
-          </a>
-          <a class="btn btn-contorno" href="tel:+5521971996174">
-            <svg><use href="#i-fone"/></svg> Ligar
           </a>
         </div>
       </div>
@@ -364,22 +488,30 @@
     <div class="container">
       <div class="titulo-secao">
         <h2>Venha nos visitar</h2>
-        <p>Estamos no Centro de São João de Meriti, de segunda a sábado.</p>
+        <p>Duas lojas pra te atender, de segunda a sábado. Escolha a mais perto de você.</p>
       </div>
-      <div class="visite-grid">
+      <div class="lojas-abas" role="tablist" aria-label="Escolha a loja">
+        <button type="button" class="loja-aba" role="tab" id="aba-sjm" data-loja="sjm" aria-controls="loja-painel">São João de Meriti</button>
+        <button type="button" class="loja-aba" role="tab" id="aba-ni" data-loja="ni" aria-controls="loja-painel">Nova Iguaçu</button>
+      </div>
+      <div class="loja-geo" id="loja-geo" hidden>
+        <button type="button" class="loja-geo-btn" id="loja-geo-btn">📍 Usar minha localização pra achar a loja mais perto</button>
+        <p class="loja-geo-msg" id="loja-geo-msg" aria-live="polite">Sua localização fica só no seu aparelho, não é enviada pra ninguém.</p>
+      </div>
+      <div class="visite-grid" id="loja-painel" role="tabpanel">
         <div class="card">
           <div class="info-linha">
             <div class="icone" aria-hidden="true">📍</div>
             <div>
               <h3>Endereço</h3>
-              <p>R. Cândida Píres, 540 - Centro<br>São João de Meriti - RJ, 25525-010</p>
+              <p id="loja-endereco"></p>
             </div>
           </div>
           <div class="info-linha">
             <div class="icone" aria-hidden="true">📞</div>
             <div>
               <h3>Telefone / WhatsApp</h3>
-              <a href="tel:+5521971996174">(21) 97199-6174</a>
+              <a id="loja-fone" href="tel:+5521971996174">(21) 97199-6174</a>
             </div>
           </div>
           <div class="info-linha" style="margin-bottom:16px">
@@ -389,25 +521,15 @@
               <span id="status" class="status" hidden></span>
             </div>
           </div>
-          <table class="horarios" id="horarios">
-            <tr data-dia="1"><td>Segunda-feira</td><td>08:30–19:30</td></tr>
-            <tr data-dia="2"><td>Terça-feira</td><td>08:30–19:30</td></tr>
-            <tr data-dia="3"><td>Quarta-feira</td><td>08:30–19:30</td></tr>
-            <tr data-dia="4"><td>Quinta-feira</td><td>08:30–19:30</td></tr>
-            <tr data-dia="5"><td>Sexta-feira</td><td>08:30–19:30</td></tr>
-            <tr data-dia="6"><td>Sábado</td><td>08:30–19:30</td></tr>
-            <tr data-dia="0"><td>Domingo</td><td>Fechado</td></tr>
-          </table>
+          <table class="horarios" id="horarios"></table>
         </div>
         <div class="mapa">
-          <iframe
-            title="Mapa: Loja de Ração Dois Irmãos"
-            src="https://www.google.com/maps?q=R.+C%C3%A2ndida+P%C3%ADres,+540+-+Centro,+S%C3%A3o+Jo%C3%A3o+de+Meriti+-+RJ,+25525-010&output=embed"
+          <iframe id="loja-mapa" title="Mapa da loja"
             loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
         </div>
       </div>
       <p style="text-align:center;margin-top:24px">
-        <a class="btn btn-amarelo" href="https://www.google.com/maps/dir/?api=1&destination=R.+C%C3%A2ndida+P%C3%ADres,+540+-+Centro,+S%C3%A3o+Jo%C3%A3o+de+Meriti+-+RJ,+25525-010" target="_blank" rel="noopener">📍 Traçar rota no Google Maps</a>
+        <a class="btn btn-amarelo" id="loja-rota" href="#" target="_blank" rel="noopener">📍 Traçar rota no Google Maps</a>
       </p>
     </div>
   </section>
@@ -415,22 +537,44 @@
 
 <footer>
   <div class="container">
-    <a class="logo" href="#inicio">
-      <img class="logo-selo" src="assets/logo.png" alt="" aria-hidden="true">
-      <span class="logo-texto"><small>Loja de Ração</small><strong>Dois Irmãos</strong></span>
-    </a>
-    <p>R. Cândida Píres, 540 - Centro, São João de Meriti - RJ</p>
-    <p>(21) 97199-6174 · Seg a Sáb, 08:30–19:30</p>
-    <p style="margin-top:14px;font-size:.9rem">© <span id="ano">2026</span> Loja de Ração Dois Irmãos</p>
-    <p style="margin-top:6px;font-size:.78rem;opacity:.55">
-      Site por <a href="https://verbinden.com.br" target="_blank" rel="noopener" style="text-decoration:underline">Verbinden</a>
-    </p>
+    <div class="foot">
+      <a class="logo" href="#inicio" aria-label="Loja de Ração Dois Irmãos - início">
+        <img class="logo-selo" src="assets/logo-96.webp" srcset="assets/logo-96.webp 1x, assets/logo-192.webp 2x" width="46" height="46" alt="" aria-hidden="true">
+        <span class="logo-texto"><small>Loja de Ração</small><strong>Dois Irmãos</strong></span>
+      </a>
+      <ul class="foot-links">
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#produtos">Produtos</a></li>
+        <li><a href="#visite">Nossas lojas</a></li>
+        <li><a href="https://wa.me/5521971996174?text=Ol%C3%A1!%20Vim%20pelo%20site." target="_blank" rel="noopener">WhatsApp</a></li>
+      </ul>
+    </div>
+    <div class="foot-bottom">
+      <span>Loja de Ração Dois Irmãos · São João de Meriti e Nova Iguaçu</span>
+      <span>© <span id="ano">2026</span> Todos os direitos reservados · Site por <a href="https://verbinden.com.br" target="_blank" rel="noopener">Verbinden</a></span>
+    </div>
   </div>
 </footer>
 
 <a class="whats-flutuante" href="https://wa.me/5521971996174?text=Ol%C3%A1!%20Vim%20pelo%20site." target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
   <svg><use href="#i-whats"/></svg>
 </a>
+
+<dialog class="zap-dialog" id="zap-dialog" aria-labelledby="zap-titulo">
+  <h2 id="zap-titulo">Falar com qual loja?</h2>
+  <p>Escolha a unidade mais perto de você.</p>
+  <div class="zap-opcoes">
+    <a class="zap-opcao" data-loja="sjm" data-numero="5521971996174" href="https://wa.me/5521971996174" target="_blank" rel="noopener">
+      <svg aria-hidden="true"><use href="#i-whats"/></svg>
+      <span><strong>São João de Meriti</strong><small>Centro · (21) 97199-6174</small></span>
+    </a>
+    <a class="zap-opcao" data-loja="ni" data-numero="5521969397793" href="https://wa.me/5521969397793" target="_blank" rel="noopener">
+      <svg aria-hidden="true"><use href="#i-whats"/></svg>
+      <span><strong>Nova Iguaçu</strong><small>Santa Eugênia · (21) 96939-7793</small></span>
+    </a>
+  </div>
+  <button type="button" class="zap-fechar" id="zap-fechar">Cancelar</button>
+</dialog>
 
 <script>
   (function () {
@@ -442,14 +586,250 @@
     var dia = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].indexOf(get('weekday'));
     var minutos = (parseInt(get('hour'), 10) % 24) * 60 + parseInt(get('minute'), 10);
 
-    var linha = document.querySelector('#horarios tr[data-dia="' + dia + '"]');
-    if (linha) linha.classList.add('hoje');
+    // Lojas: cada uma com endereço, mapa e horário próprios
+    var LOJAS = {
+      sjm: {
+        nome: 'São João de Meriti',
+        endereco: 'R. Cândida Píres, 540 - Centro<br>São João de Meriti - RJ, 25525-010',
+        busca: 'R. Cândida Píres, 540 - Centro, São João de Meriti - RJ, 25525-010',
+        fone: '(21) 97199-6174', tel: '+5521971996174',
+        abre: 8 * 60 + 30, fecha: 19 * 60 + 30,
+        lat: -22.7983, lng: -43.3774
+      },
+      ni: {
+        nome: 'Nova Iguaçu',
+        endereco: 'R. Gen. Rondon, 373 - Santa Eugênia<br>Nova Iguaçu - RJ, 26285-610',
+        busca: 'R. Gen. Rondon, 373 - Santa Eugênia, Nova Iguaçu - RJ, 26285-610',
+        fone: '(21) 96939-7793', tel: '+5521969397793',
+        abre: 9 * 60, fecha: 20 * 60,
+        lat: -22.7518, lng: -43.4595
+      }
+    };
+    var DIAS = [[1, 'Segunda-feira'], [2, 'Terça-feira'], [3, 'Quarta-feira'], [4, 'Quinta-feira'], [5, 'Sexta-feira'], [6, 'Sábado'], [0, 'Domingo']];
+    var hhmm = function (m) { return String(Math.floor(m / 60)).padStart(2, '0') + ':' + String(m % 60).padStart(2, '0'); };
 
-    var aberto = dia !== 0 && minutos >= 8 * 60 + 30 && minutos < 19 * 60 + 30;
-    var status = document.getElementById('status');
-    status.textContent = aberto ? 'Aberto agora' : 'Fechado agora';
-    status.className = 'status ' + (aberto ? 'aberto' : 'fechado');
-    status.hidden = false;
+    function mostrarLoja(id) {
+      var loja = LOJAS[id];
+      document.querySelectorAll('.loja-aba').forEach(function (b) {
+        var ativa = b.dataset.loja === id;
+        b.setAttribute('aria-selected', ativa);
+        b.tabIndex = ativa ? 0 : -1;
+      });
+      document.getElementById('loja-painel').setAttribute('aria-labelledby', 'aba-' + id);
+      document.getElementById('loja-endereco').innerHTML = loja.endereco;
+      var fone = document.getElementById('loja-fone');
+      fone.textContent = loja.fone;
+      fone.href = 'tel:' + loja.tel;
+
+      var faixa = hhmm(loja.abre) + '–' + hhmm(loja.fecha);
+      document.getElementById('horarios').innerHTML = DIAS.map(function (d) {
+        return '<tr' + (d[0] === dia ? ' class="hoje"' : '') + '><td>' + d[1] + '</td><td>' + (d[0] === 0 ? 'Fechado' : faixa) + '</td></tr>';
+      }).join('');
+
+      var aberto = dia !== 0 && minutos >= loja.abre && minutos < loja.fecha;
+      var status = document.getElementById('status');
+      status.textContent = aberto ? 'Aberto agora' : 'Fechado agora';
+      status.className = 'status ' + (aberto ? 'aberto' : 'fechado');
+      status.hidden = false;
+
+      var q = encodeURIComponent(loja.busca);
+      var mapa = document.getElementById('loja-mapa');
+      mapa.title = 'Mapa: Dois Irmãos ' + loja.nome;
+      mapa.src = 'https://www.google.com/maps?q=' + q + '&output=embed';
+      document.getElementById('loja-rota').href = 'https://www.google.com/maps/dir/?api=1&destination=' + q;
+    }
+
+    // Loja "da pessoa": escolhida na mão ou pela localização. Fica salva no navegador.
+    var CHAVE_LOJA = 'dois-irmaos-loja';
+    var lojaDaPessoa = null;
+    try { lojaDaPessoa = localStorage.getItem(CHAVE_LOJA); } catch (e) {}
+    if (!LOJAS[lojaDaPessoa]) lojaDaPessoa = null;
+    function guardarLoja(id) {
+      lojaDaPessoa = id;
+      try { localStorage.setItem(CHAVE_LOJA, id); } catch (e) {}
+    }
+
+    document.querySelectorAll('.loja-aba').forEach(function (b, i, abas) {
+      b.addEventListener('click', function () { mostrarLoja(b.dataset.loja); guardarLoja(b.dataset.loja); });
+      b.addEventListener('keydown', function (e) {
+        if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+        var prox = abas[(i + (e.key === 'ArrowRight' ? 1 : abas.length - 1)) % abas.length];
+        prox.focus(); prox.click();
+      });
+    });
+    mostrarLoja(lojaDaPessoa || 'sjm');
+
+    // Localização: só pede quando a pessoa clica no botão (nunca ao abrir a página)
+    var geoBox = document.getElementById('loja-geo');
+    var geoBtn = document.getElementById('loja-geo-btn');
+    var geoMsg = document.getElementById('loja-geo-msg');
+    function distanciaKm(lat1, lng1, lat2, lng2) {
+      var rad = Math.PI / 180, dLat = (lat2 - lat1) * rad, dLng = (lng2 - lng1) * rad;
+      var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) + Math.cos(lat1 * rad) * Math.cos(lat2 * rad) * Math.sin(dLng / 2) * Math.sin(dLng / 2);
+      return 6371 * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    }
+    function localizar() {
+      geoBtn.disabled = true;
+      geoMsg.textContent = 'Procurando a loja mais perto…';
+      navigator.geolocation.getCurrentPosition(function (pos) {
+        var eu = pos.coords, melhor = null, menor = Infinity;
+        Object.keys(LOJAS).forEach(function (id) {
+          var d = distanciaKm(eu.latitude, eu.longitude, LOJAS[id].lat, LOJAS[id].lng);
+          if (d < menor) { menor = d; melhor = id; }
+        });
+        mostrarLoja(melhor);
+        guardarLoja(melhor);
+        var km = menor < 1 ? 'menos de 1 km' : 'uns ' + menor.toLocaleString('pt-BR', { maximumFractionDigits: menor < 10 ? 1 : 0 }) + ' km';
+        geoMsg.innerHTML = 'Mais perto de você: <strong>' + LOJAS[melhor].nome + '</strong>, a ' + km + '.';
+        geoBtn.disabled = false;
+      }, function (err) {
+        geoMsg.textContent = err.code === 1
+          ? 'Tudo bem! É só escolher a loja nos botões acima.'
+          : 'Não conseguimos achar sua localização agora. Escolha a loja nos botões acima.';
+        geoBtn.disabled = false;
+      }, { enableHighAccuracy: false, timeout: 10000, maximumAge: 10 * 60 * 1000 });
+    }
+
+    if ('geolocation' in navigator && window.isSecureContext) {
+      geoBox.hidden = false;
+      geoBtn.addEventListener('click', localizar);
+
+      // Automático: pede quando a pessoa chega na seção das lojas (não ao abrir a página).
+      // Não pede se ela já tem loja salva ou se já recusou antes.
+      var pedirAoChegar = function () {
+        if (lojaDaPessoa || !('IntersectionObserver' in window)) return;
+        var io = new IntersectionObserver(function (entradas) {
+          if (!entradas[0].isIntersecting) return;
+          io.disconnect();
+          if (!lojaDaPessoa) localizar(); // se escolheu na mão enquanto rolava, respeita
+        }, { threshold: 0.35 });
+        io.observe(document.getElementById('visite'));
+      };
+      if (navigator.permissions && navigator.permissions.query) {
+        navigator.permissions.query({ name: 'geolocation' }).then(function (st) {
+          if (st.state === 'granted' && !lojaDaPessoa) localizar(); // já autorizou antes: sem pedir de novo
+          else if (st.state === 'prompt') pedirAoChegar();
+        }, pedirAoChegar);
+      } else {
+        pedirAoChegar();
+      }
+    }
+
+    // ===== Catálogo =====
+    // Para atualizar: edite a lista abaixo e a data. Preço em reais (número). "foto" é opcional (caminho da imagem).
+    var CATALOGO_EXEMPLO = true; // trocar para false quando entrar a lista real
+    var CATALOGO_ATUALIZADO = '29/09/2026';
+    var CATEGORIAS = { caes: ['Cães', '🐶'], gatos: ['Gatos', '🐱'], passaros: ['Pássaros', '🦜'], outros: ['Outros', '🐾'] };
+    var PRODUTOS = [
+      { cat: 'caes', marca: 'Marca A', nome: 'Ração Premium Cães Adultos', peso: '15 kg', preco: 189.90 },
+      { cat: 'caes', marca: 'Marca B', nome: 'Ração Cães Filhotes', peso: '10 kg', preco: 149.90 },
+      { cat: 'caes', marca: 'Marca C', nome: 'Ração Cães Raças Pequenas', peso: '3 kg', preco: 54.90 },
+      { cat: 'caes', marca: 'Marca A', nome: 'Ração Super Premium Cães Adultos', peso: '15 kg', preco: 259.90 },
+      { cat: 'caes', marca: 'Marca D', nome: 'Ração Cães Adultos Carne', peso: '20 kg', preco: 139.90 },
+      { cat: 'caes', marca: 'Marca E', nome: 'Petisco Bifinho Cães', peso: '500 g', preco: 24.90 },
+      { cat: 'caes', marca: 'Marca F', nome: 'Osso Mastigável', peso: 'unidade', preco: 9.90 },
+      { cat: 'gatos', marca: 'Marca B', nome: 'Ração Gatos Adultos Castrados', peso: '10 kg', preco: 169.90 },
+      { cat: 'gatos', marca: 'Marca G', nome: 'Ração Gatos Filhotes', peso: '3 kg', preco: 59.90 },
+      { cat: 'gatos', marca: 'Marca C', nome: 'Ração Gatos Adultos Peixe', peso: '10 kg', preco: 119.90 },
+      { cat: 'gatos', marca: 'Marca G', nome: 'Sachê Gatos Adultos', peso: '85 g', preco: 3.49 },
+      { cat: 'gatos', marca: 'Marca H', nome: 'Areia Sanitária Gatos', peso: '4 kg', preco: 19.90 },
+      { cat: 'gatos', marca: 'Marca E', nome: 'Petisco Gatos', peso: '60 g', preco: 8.90 },
+      { cat: 'passaros', marca: 'Marca I', nome: 'Mistura para Calopsita', peso: '500 g', preco: 14.90 },
+      { cat: 'passaros', marca: 'Marca I', nome: 'Alpiste', peso: '1 kg', preco: 12.90 },
+      { cat: 'passaros', marca: 'Marca J', nome: 'Farinhada para Pássaros', peso: '500 g', preco: 16.90 },
+      { cat: 'outros', marca: 'Marca K', nome: 'Shampoo Cães e Gatos', peso: '500 ml', preco: 22.90 },
+      { cat: 'outros', marca: 'Marca L', nome: 'Antipulgas Cães', peso: '1 pipeta', preco: 39.90 },
+      { cat: 'outros', marca: 'Marca M', nome: 'Tapete Higiênico', peso: '30 unidades', preco: 49.90 },
+      { cat: 'outros', marca: 'Marca N', nome: 'Comedouro Inox', peso: 'unidade', preco: 18.90 }
+    ];
+    var MOSTRAR_INICIAL = 8;
+    var brl = function (v) { return v.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }); };
+    var esc = function (s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); };
+    var catAtual = 'todos', catExpandido = false;
+    var catGrid = document.getElementById('cat-grid');
+    var catMais = document.getElementById('cat-mais');
+    var catFiltros = document.getElementById('cat-filtros');
+
+    document.getElementById('cat-aviso').hidden = !CATALOGO_EXEMPLO;
+    document.getElementById('cat-data').textContent = 'Preços atualizados em ' + CATALOGO_ATUALIZADO + '. Confirme no WhatsApp.';
+
+    catFiltros.innerHTML = [['todos', 'Todos']].concat(Object.keys(CATEGORIAS).filter(function (k) {
+      return PRODUTOS.some(function (p) { return p.cat === k; });
+    }).map(function (k) { return [k, CATEGORIAS[k][1] + ' ' + CATEGORIAS[k][0]]; })).map(function (f) {
+      return '<button type="button" class="cat-filtro" data-cat="' + f[0] + '" aria-pressed="' + (f[0] === catAtual) + '">' + f[1] + '</button>';
+    }).join('');
+
+    function renderCatalogo() {
+      var lista = PRODUTOS.filter(function (p) { return catAtual === 'todos' || p.cat === catAtual; });
+      var visiveis = catExpandido ? lista : lista.slice(0, MOSTRAR_INICIAL);
+      catGrid.innerHTML = visiveis.map(function (p) {
+        var titulo = p.nome + ' ' + p.marca + ' ' + p.peso;
+        var msg = 'Olá! Vim pelo site e quero: ' + titulo + ' (' + brl(p.preco) + ').';
+        var foto = p.foto ? '<img src="' + esc(p.foto) + '" alt="" loading="lazy">' : CATEGORIAS[p.cat][1];
+        return '<li class="cat-item">' +
+          '<div class="cat-foto" aria-hidden="true">' + foto + '</div>' +
+          '<div class="cat-info">' +
+            '<span class="cat-marca">' + esc(p.marca) + '</span>' +
+            '<h3 class="cat-nome">' + esc(p.nome) + '</h3>' +
+            '<span class="cat-peso">' + esc(p.peso) + '</span>' +
+            '<span class="cat-preco">' + brl(p.preco) + '</span>' +
+            '<a class="cat-pedir" href="https://wa.me/5521971996174?text=' + encodeURIComponent(msg) + '" target="_blank" rel="noopener" aria-label="Pedir ' + esc(titulo) + ' no WhatsApp">' +
+              '<svg aria-hidden="true"><use href="#i-whats"/></svg> Pedir<span class="cat-pedir-extra"> no WhatsApp</span></a>' +
+          '</div></li>';
+      }).join('');
+      catMais.hidden = lista.length <= MOSTRAR_INICIAL;
+      catMais.textContent = catExpandido ? 'Mostrar menos' : 'Ver todos (' + lista.length + ')';
+      catMais.setAttribute('aria-expanded', catExpandido);
+    }
+
+    catFiltros.addEventListener('click', function (e) {
+      var b = e.target.closest('.cat-filtro');
+      if (!b) return;
+      catAtual = b.dataset.cat;
+      catExpandido = false;
+      catFiltros.querySelectorAll('.cat-filtro').forEach(function (x) { x.setAttribute('aria-pressed', x === b); });
+      renderCatalogo();
+    });
+    catMais.addEventListener('click', function () {
+      catExpandido = !catExpandido;
+      renderCatalogo();
+      if (!catExpandido) document.getElementById('produtos').scrollIntoView({ behavior: 'smooth' });
+    });
+    renderCatalogo();
+
+    // WhatsApp: antes de abrir, a pessoa escolhe a loja (sem JS, o link cai direto em São João)
+    var zap = document.getElementById('zap-dialog');
+    if (zap && typeof zap.showModal === 'function') {
+      // delegação: vale também pros botões do catálogo, que são criados depois
+      document.addEventListener('click', function (e) {
+        var a = e.target.closest('a[href^="https://wa.me/"]');
+        if (!a || a.classList.contains('zap-opcao')) return;
+        e.preventDefault();
+        var texto = new URL(a.href).searchParams.get('text') || '';
+        zap.querySelectorAll('.zap-opcao').forEach(function (op) {
+          op.href = 'https://wa.me/' + op.dataset.numero + (texto ? '?text=' + encodeURIComponent(texto) : '');
+        });
+        var opcoes = zap.querySelector('.zap-opcoes');
+        zap.querySelectorAll('.zap-opcao').forEach(function (op) {
+          var dela = op.dataset.loja === lojaDaPessoa;
+          op.classList.toggle('sugerida', dela);
+          var selo = op.querySelector('.zap-selo');
+          if (dela && !selo) op.querySelector('strong').insertAdjacentHTML('beforeend', '<span class="zap-selo">Sua loja</span>');
+          if (!dela && selo) selo.remove();
+          if (dela) opcoes.prepend(op);
+        });
+        zap.showModal();
+      });
+      zap.querySelectorAll('.zap-opcao').forEach(function (op) {
+        op.addEventListener('click', function () { zap.close(); });
+      });
+      document.getElementById('zap-fechar').addEventListener('click', function () { zap.close(); });
+      zap.addEventListener('click', function (e) { // clique fora da caixa fecha
+        if (e.target !== zap) return;
+        var r = zap.getBoundingClientRect();
+        if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) zap.close();
+      });
+    }
 
     document.getElementById('ano').textContent = new Date().getFullYear();
 
