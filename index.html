@@ -203,6 +203,26 @@
   .whats-flutuante svg { width: 32px; height: 32px; }
   @keyframes pulsar { 0%,100% { transform: scale(1); } 50% { transform: scale(1.07); } }
   @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; scroll-behavior: auto !important; } }
+
+  /* Marcas (carrossel infinito) */
+  .marcas { padding: 12px 0 56px; overflow: hidden; }
+  .marcas-titulo { text-align: center; color: var(--cinza); font-weight: 700; letter-spacing: .06em; text-transform: uppercase; font-size: .85rem; margin-bottom: 24px; }
+  .marcas-viewport { max-width: 100%; }
+  .marcas-track { display: flex; }
+  .marcas-lista { list-style: none; margin: 0; padding: 0; display: flex; gap: 16px; }
+  .marca-chip { flex: none; padding: .55em 1.3em; border-radius: 999px; background: var(--roxo-claro); color: var(--roxo-escuro); font-weight: 800; font-family: "Baloo 2", sans-serif; font-size: 1.05rem; white-space: nowrap; }
+  .marcas-lista[aria-hidden="true"] { display: none; }
+  .marcas-viewport.is-looping {
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+            mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  }
+  .is-looping .marcas-track { width: max-content; animation: marcas-marquee 28s linear infinite; }
+  .is-looping .marcas-lista[aria-hidden="true"] { display: flex; }
+  .is-looping:hover .marcas-track { animation-play-state: paused; }
+  @keyframes marcas-marquee { to { transform: translateX(-50%); } }
+  @media (max-width: 600px) {
+    .marcas-viewport:not(.is-looping) .marcas-lista { flex-wrap: wrap; justify-content: center; }
+  }
 </style>
 </head>
 <body>
@@ -297,6 +317,23 @@
         <span class="chip">Cartão de crédito</span>
         <span class="chip">Cartão de débito</span>
         <span class="chip">Dinheiro</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="marcas" aria-labelledby="marcas-titulo">
+    <p class="marcas-titulo" id="marcas-titulo">Marcas que trabalhamos</p>
+    <div class="marcas-viewport" id="marcas-viewport">
+      <div class="marcas-track" id="marcas-track">
+        <ul class="marcas-lista" role="list">
+          <!-- PLACEHOLDER: trocar pelas marcas reais que a loja vende -->
+          <li class="marca-chip">Golden</li>
+          <li class="marca-chip">Pedigree</li>
+          <li class="marca-chip">Whiskas</li>
+          <li class="marca-chip">Royal Canin</li>
+          <li class="marca-chip">Premier</li>
+          <li class="marca-chip">N&D</li>
+        </ul>
       </div>
     </div>
   </section>
@@ -414,6 +451,15 @@
     status.hidden = false;
 
     document.getElementById('ano').textContent = new Date().getFullYear();
+
+    // Marcas: duplica a lista pra o carrossel dar loop sem emenda
+    var marcasTrack = document.getElementById('marcas-track');
+    if (marcasTrack) {
+      var clone = marcasTrack.firstElementChild.cloneNode(true);
+      clone.setAttribute('aria-hidden', 'true');
+      marcasTrack.appendChild(clone);
+      document.getElementById('marcas-viewport').classList.add('is-looping');
+    }
   })();
 </script>
 </body>
