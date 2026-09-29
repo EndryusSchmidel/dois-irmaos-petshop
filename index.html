@@ -113,15 +113,28 @@
   .hero h1 span { color: var(--amarelo); }
   .hero p { font-size: 1.15rem; max-width: 34em; opacity: .95; margin: 0 0 28px; }
   .hero-acoes { display: flex; flex-wrap: wrap; gap: 12px; }
-  .hero-arte { position: relative; margin: 0; padding: 0 14px 18px; }
+  .hero-arte { position: relative; margin: 0; padding: 0 14px 44px; }
   .hero-foto {
     display: block; width: 100%; max-width: 100%; height: auto; aspect-ratio: 17 / 10; object-fit: cover;
     border-radius: 22px; border: 6px solid #fff; transform: rotate(1.5deg);
     box-shadow: 0 18px 40px rgba(0,0,0,.28), 0 0 0 14px rgba(255,198,41,.18);
     background: var(--roxo-claro);
   }
+  .hero-slides { position: relative; transform: rotate(1.5deg); }
+  .hero-slides .hero-foto { transform: none; }
+  .hero-slide { display: block; transition: opacity .9s ease; }
+  .hero-slide + .hero-slide { position: absolute; inset: 0; }
+  .hero-slide:not(.ativa) { opacity: 0; }
+  .hero-slide:not(.ativa) .hero-foto { box-shadow: none; }
+  .hero-pontos { position: absolute; left: 50%; bottom: -30px; transform: translateX(-50%); display: flex; gap: 8px; }
+  .hero-ponto {
+    width: 11px; height: 11px; padding: 0; border-radius: 50%; cursor: pointer;
+    border: 2px solid #fff; background: transparent; opacity: .8;
+  }
+  .hero-ponto[aria-pressed="true"] { background: var(--amarelo); border-color: var(--amarelo); opacity: 1; }
+  .hero-ponto:focus-visible { outline: 3px solid var(--amarelo); outline-offset: 2px; }
   .hero-arte figcaption {
-    position: absolute; left: 50%; bottom: 0; transform: translateX(-50%);
+    position: absolute; left: 50%; bottom: 26px; transform: translateX(-50%); z-index: 2;
     background: var(--amarelo); color: var(--roxo-escuro); font-weight: 800; font-size: .85rem;
     padding: .35em 1em; border-radius: 999px; white-space: nowrap; box-shadow: 0 6px 14px rgba(0,0,0,.2);
   }
@@ -385,14 +398,22 @@
         </div>
       </div>
       <figure class="hero-arte">
-        <picture>
-          <source srcset="assets/fachada.webp" type="image/webp">
-          <img class="hero-foto" src="assets/fachada.jpg" width="680" height="400"
-               alt="Fachada da Loja de Ração Dois Irmãos em São João de Meriti, com a placa amarela e roxa">
-        </picture>
+        <div class="hero-slides" id="hero-slides">
+          <picture class="hero-slide ativa" data-legenda="Nossa loja em São João de Meriti">
+            <source srcset="assets/fachada.webp" type="image/webp">
+            <img class="hero-foto" src="assets/fachada.jpg" width="680" height="400"
+                 alt="Fachada da Loja de Ração Dois Irmãos em São João de Meriti, com a placa amarela e roxa">
+          </picture>
+          <picture class="hero-slide" data-legenda="Nossa loja em Nova Iguaçu">
+            <source srcset="assets/fachada-ni.webp" type="image/webp">
+            <img class="hero-foto" src="assets/fachada-ni.jpg" width="960" height="565"
+                 alt="Fachada da Loja de Ração Dois Irmãos em Nova Iguaçu, com a placa laranja">
+          </picture>
+        </div>
         <span class="balao b1" aria-hidden="true">Aumigo? 🐾</span>
         <span class="balao b2" aria-hidden="true">Miaumigo? 💜</span>
-        <figcaption>Nossa loja em São João de Meriti</figcaption>
+        <figcaption id="hero-legenda" aria-live="polite">Nossa loja em São João de Meriti</figcaption>
+        <div class="hero-pontos" id="hero-pontos" role="group" aria-label="Escolher foto da loja"></div>
       </figure>
     </div>
   </div>
@@ -831,6 +852,30 @@
         if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) zap.close();
       });
     }
+
+    // Topo: reveza as fotos das duas lojas
+    (function () {
+      var slides = Array.prototype.slice.call(document.querySelectorAll('.hero-slide'));
+      var legenda = document.getElementById('hero-legenda');
+      var pontos = document.getElementById('hero-pontos');
+      if (slides.length < 2) return;
+      var atual = 0, timer = null, INTERVALO = 5000;
+      var calmo = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+      pontos.innerHTML = slides.map(function (s, i) {
+        return '<button type="button" class="hero-ponto" aria-label="' + s.dataset.legenda + '" aria-pressed="' + (i === 0) + '"></button>';
+      }).join('');
+      var botoes = pontos.querySelectorAll('.hero-ponto');
+      function ir(i) {
+        atual = (i + slides.length) % slides.length;
+        slides.forEach(function (s, k) { s.classList.toggle('ativa', k === atual); });
+        botoes.forEach(function (b, k) { b.setAttribute('aria-pressed', k === atual); });
+        legenda.textContent = slides[atual].dataset.legenda;
+      }
+      function tocar() { if (!calmo) { clearInterval(timer); timer = setInterval(function () { ir(atual + 1); }, INTERVALO); } }
+      botoes.forEach(function (b, k) { b.addEventListener('click', function () { ir(k); tocar(); }); });
+      document.addEventListener('visibilitychange', function () { document.hidden ? clearInterval(timer) : tocar(); });
+      tocar();
+    })();
 
     document.getElementById('ano').textContent = new Date().getFullYear();
 
