@@ -217,6 +217,7 @@
             mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
   }
   .is-looping .marcas-track { width: max-content; animation: marcas-marquee 28s linear infinite; }
+  .is-looping .marcas-lista { flex: none; padding-right: 16px; }
   .is-looping .marcas-lista[aria-hidden="true"] { display: flex; }
   .is-looping:hover .marcas-track { animation-play-state: paused; }
   @keyframes marcas-marquee { to { transform: translateX(-50%); } }
@@ -455,10 +456,23 @@
     // Marcas: duplica a lista pra o carrossel dar loop sem emenda
     var marcasTrack = document.getElementById('marcas-track');
     if (marcasTrack) {
-      var clone = marcasTrack.firstElementChild.cloneNode(true);
+      var marcasVp = document.getElementById('marcas-viewport');
+      var lista = marcasTrack.firstElementChild;
+      var originais = Array.prototype.slice.call(lista.children);
+      marcasVp.classList.add('is-looping'); // antes de medir: tira o flex-wrap do celular
+      // repete os itens até uma cópia cobrir a tela inteira (senão sobra buraco no loop)
+      for (var i = 0; i < 20 && lista.scrollWidth < marcasVp.clientWidth; i++) {
+        originais.forEach(function (li) {
+          var c = li.cloneNode(true);
+          c.setAttribute('aria-hidden', 'true');
+          lista.appendChild(c);
+        });
+      }
+      var clone = lista.cloneNode(true);
       clone.setAttribute('aria-hidden', 'true');
       marcasTrack.appendChild(clone);
-      document.getElementById('marcas-viewport').classList.add('is-looping');
+      // velocidade constante (~40px/s), independente de quantas marcas
+      marcasTrack.style.animationDuration = Math.round(lista.scrollWidth / 40) + 's';
     }
   })();
 </script>
